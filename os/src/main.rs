@@ -4,6 +4,8 @@
 
 #[macro_use]
 mod console;
+#[macro_use]
+mod log;
 mod lang_items;
 mod sbi;
 
@@ -14,7 +16,7 @@ global_asm!(include_str!("entry.asm"));
 #[no_mangle]
 pub fn rust_main() -> ! {
     clear_bss();
-    println!("rCore boot done");
+    info!("rCore boot done");
     panic!("Shutdown machine!");
 }
 
