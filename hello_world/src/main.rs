@@ -4,7 +4,5 @@
 mod lang_items;
 mod console;
 
-#[no_mangle]
-fn main() {
-    println!("Hello, world!");
-}
+use core::arch::global_asm;
+global_asm!(include_str!("entry.asm"));
