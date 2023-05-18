@@ -1,8 +1,11 @@
 #![no_std]
 #![no_main]
+#![feature(panic_info_message)]
 
-mod lang_items;
+#[macro_use]
 mod console;
+mod lang_items;
+mod sbi;
 
 use core::arch::global_asm;
 global_asm!(include_str!("entry.asm"));
@@ -10,7 +13,8 @@ global_asm!(include_str!("entry.asm"));
 #[no_mangle]
 pub fn main() -> ! {
     clear_bss();
-    loop {}
+    println!("rCore boot done");
+    panic!("Shutdown machine!");
 }
 #[inline(never)]
 #[no_mangle]
